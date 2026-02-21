@@ -44,8 +44,14 @@ class _WeatherCardState extends State<WeatherCard>
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              Text(widget.weatherModel.cityName),
-              Text('${widget.weatherModel.temperature} C'),
+              Text(
+                widget.weatherModel.cityName,
+                style: TextStyle(fontSize: 26, fontWeight: FontWeight.w600),
+              ),
+              Text(
+                '${widget.weatherModel.temperature} C',
+                style: TextStyle(fontSize: 22, fontWeight: FontWeight.w500),
+              ),
               Image.network(
                 'https://openweathermap.org/img/wn/${widget.weatherModel.icon}@2x.png',
               ),
