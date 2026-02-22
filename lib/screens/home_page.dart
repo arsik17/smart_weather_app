@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:smart_weather_app/models/weather_model.dart';
 import 'package:smart_weather_app/providers/weather_provider.dart';
 import 'package:smart_weather_app/screens/search_page.dart';
 import 'package:smart_weather_app/widgets/weather_card.dart';
@@ -25,21 +24,13 @@ class _HomePageState extends State<HomePage> {
     if (temp <= 0) return Colors.blue.shade900;
     if (temp <= 15) return Colors.blue;
     if (temp <= 25) return Colors.amber;
-    return Colors.amber.shade700;
+    return Colors.amber.shade900;
   }
 
   @override
   Widget build(BuildContext context) {
     final provider = context.watch<WeatherProvider>();
 
-    // final weatherModel = WeatherModel(
-    //   cityName: 'Astana',
-    //   temperature: -10,
-    //   icon: '01d',
-    //   description: 'sunny',
-    //   humidity: 77,
-    //   windSpeed: 2,
-    // );
     return Scaffold(
       body: SafeArea(
         child: AnimatedContainer(
@@ -55,7 +46,12 @@ class _HomePageState extends State<HomePage> {
                   ? CircularProgressIndicator()
                   : provider.error != null
                   ? Text(provider.error!)
-                  : WeatherCard(weatherModel: provider.weather!),
+                  : provider.weather != null
+                  ? WeatherCard(
+                      weatherModel: provider.weather!,
+                      forecast: provider.forecast,
+                    )
+                  : Text('Error'),
             ),
           ),
         ),

@@ -11,6 +11,7 @@ class SearchPage extends StatefulWidget {
 
 class _SearchPageState extends State<SearchPage> {
   late TextEditingController controller = TextEditingController();
+
   @override
   void initState() {
     super.initState();
@@ -46,7 +47,7 @@ class _SearchPageState extends State<SearchPage> {
                 } else {
                   ScaffoldMessenger.of(
                     context,
-                  ).showSnackBar(SnackBar(content: Text('City not Found')));
+                  ).showSnackBar(SnackBar(content: Text('City not found')));
                 }
               },
               child: Text('Search'),
